@@ -1,5 +1,5 @@
 require 'should'
-handleServices = require '../handleServices'
+handleServices = require './handleServices'
 
 describe 'handleServices', ->
   it 'should call hooks for each service', ->
