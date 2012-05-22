@@ -8,7 +8,7 @@ fsMockFactory = ->
   fsHistory: []
   readdir: (path, callback)->
     @fsHistory.push {command: 'readdir', path: path}
-    callback @readdirError, readdirFiles.path
+    callback @readdirError, @readdirFiles[path]
   mkdir: (path, callback)->
     @fsHistory.push {command: 'mkdir', path: path}
     callback @mkdirError
