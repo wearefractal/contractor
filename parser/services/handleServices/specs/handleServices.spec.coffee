@@ -22,9 +22,9 @@ describe 'handleServices', ->
 
     handleServices services, serviceHook
 
-    name.should.contain 'service1'
-    name.should.contain 'service2'
-    inElement.should.contain 'foo'
-    inElement.should.contain 'baz'
-    out.should.contain 'bar'
-    out.should.contain 'xyzzy'
+    name.should.include 'service1'
+    name.should.include 'service2'
+    inElement.should.include 'foo'
+    inElement.should.include 'baz'
+    out.should.include 'bar'
+    out.should.include 'xyzzy'
