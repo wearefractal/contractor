@@ -1,4 +1,5 @@
 require 'should'
+util = require 'util'
 setupServicesDirectoryStructure = require './setupServicesDirectoryStructure'
 fsFactory = require '../shared_mocks/fs.mock'
 
@@ -11,7 +12,7 @@ describe 'setupServicesDirectoryStructure', (done)->
       aFs.readdirFiles[pathToDomain] = ['services']
       aFs.readdirFiles["#{pathToDomain}/services"] = [targetService]
   
-      setupDirectoryStructure pathToDomain, targetService, ->
+      setupServicesDirectoryStructure aFs, pathToDomain, targetService, ->
         for element in aFs.fsHistory
           element.command.should.not.eql 'mkdir'
           element.command.should.not.eql 'open'
@@ -24,7 +25,7 @@ describe 'setupServicesDirectoryStructure', (done)->
       targetService = 'foo'
       aFs = fsFactory()
   
-      setupDirectoryStructure pathToDomain, targetService, ->
+      setupServicesDirectoryStructure aFs, pathToDomain, targetService, ->
         aFs.fsHistory.should.includeEql {command: 'mkdir', path: "#{pathToDomain}/services"}
         done()
   
@@ -35,8 +36,6 @@ describe 'setupServicesDirectoryStructure', (done)->
       aFs = fsFactory()
       aFs.readdirFiles[pathToDomain] = ['services']
   
-      setupDirectoryStructure pathToDomain, targetService, ->
+      setupServicesDirectoryStructure aFs, pathToDomain, targetService, ->
         aFs.fsHistory.should.includeEql {command: 'mkdir', path: "#{pathToDomain}/services/#{targetService}"}
         done()
-
-
