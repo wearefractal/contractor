@@ -1,3 +1,4 @@
+
 applyHooksToServices = (mainObject, hooks, callback)->
   for service of mainObject
     object = mainObject[service]

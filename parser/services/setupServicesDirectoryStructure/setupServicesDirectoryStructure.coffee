@@ -1,5 +1,9 @@
 
 setupServicesDirectoryStructure = (fs, pathToDomain, targetService, callback)->
+  console.log "fs: #{fs}"
+  console.log "pathToDomain: #{pathToDomain}"
+  console.log "targetService: #{targetService}"
+  console.log "callback: #{callback}"
   setupServicesDir fs, pathToDomain, ->
     setupTargetDir fs, pathToDomain, targetService, ->
       callback()

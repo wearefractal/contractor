@@ -4,15 +4,18 @@ createIdiomaticServiceString = require '../createIdiomaticServiceString/createId
 
 handleServices = (fs, pathToDomain, services, callback)->
   hook = (serviceObject)->
-    setupServicesDirectoryStructure fs, pathToDomain, ->
-      serviceScaffold = createIdiomaticServiceString serviceObject
-      fs.open "#{pathToDomain}/services/#{serviceObject.name}/#{serviceObject.name}.coffee", 'w', (err, fd)->
-        fs.write fd, serviceData, serviceScaffold, 0, serviceScaffold.length, (err, fd)->
-          fs.close fd, (err)->
-            throw err if err
+    setupServicesDirectoryStructure fs, pathToDomain, serviceObject.name, ->
+      writeFile fs, pathToDomain, serviceObject, callback
 
-  applyHooksToServices fs, services, hook, ->
+  applyHooksToServices services, hook, ->
     console.log 'bar'
     callback()
+
+writeFile = (fs, pathToDomain, serviceObject, callback)->
+  serviceScaffold = createIdiomaticServiceString serviceObject
+  fs.open "#{pathToDomain}/services/#{serviceObject.name}/#{serviceObject.name}.coffee", 'w', (err, fd)->
+    fs.write fd, serviceScaffold, serviceScaffold, 0, serviceScaffold.length, (err, fd)->
+      fs.close fd, (err)->
+        callback()
 
 module.exports = handleServices

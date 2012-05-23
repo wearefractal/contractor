@@ -20,4 +20,3 @@ describe 'handleServices', ->
       handleServices fs, pathToDomain, services, ->
         console.log fs.fsHistory
         assert false
-#TODO
