@@ -4,7 +4,6 @@ createIdiomaticServiceString = (serviceObject)->
   typeReminder = createTypeReminder serviceObject
   body = '\n  #TODO this is an auto-scaffolded method'
   exports = "\n\nmodule.exports = #{serviceObject.name}"
-
   return '\n' + signature + typeReminder + body + exports
 
 createTypeReminder = (serviceObject)->

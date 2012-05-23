@@ -1,7 +1,7 @@
 require 'should'
-handleServices = require './handleServices'
+applyHooksToServices = require './applyHooksToServices'
 
-describe 'handleServices', (done)->
+describe 'applyHooksToServices', (done)->
   it 'should call hooks for each service', (done)->
     name = []
     inElement = []
@@ -20,7 +20,7 @@ describe 'handleServices', (done)->
         in: 'baz'
         out: 'xyzzy'
 
-    handleServices services, serviceHook, ->
+    applyHooksToServices services, serviceHook, ->
       name.should.include 'service1'
       name.should.include 'service2'
       inElement.should.include 'foo'
