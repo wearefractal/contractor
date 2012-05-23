@@ -57,7 +57,7 @@ describe 'handleServices', ->
         secondExpectedArray = [mkdirServices, mkdirSecondServices, openSecondServicesCoffee, writeSecondFd, closeSecondFd]
 
         fs.fsHistory.should.includeEql mkdirServices
-        for i in [1..5]
+        for i in [1..4]
           fs.fsHistory.should.includeEql firstExpectedArray[i]
           fs.fsHistory.indexOf(firstExpectedArray[i - 1]).should.be.below i
           fs.fsHistory.should.includeEql secondExpectedArray[i]

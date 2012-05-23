@@ -5,7 +5,7 @@ createIdiomaticServiceString = require '../createIdiomaticServiceString/createId
 handleServices = (fs, pathToDomain, services, callback)->
   hook = (serviceObject)->
     setupServicesDirectoryStructure fs, pathToDomain, serviceObject.name, ->
-      writeFile fs, pathToDomain, serviceObject, callback
+      writeFile fs, pathToDomain, serviceObject, ->
 
   applyHooksToServices services, hook, ->
     callback()
