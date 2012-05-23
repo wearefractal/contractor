@@ -8,13 +8,12 @@ handleServices = (fs, pathToDomain, services, callback)->
       writeFile fs, pathToDomain, serviceObject, callback
 
   applyHooksToServices services, hook, ->
-    console.log 'bar'
     callback()
 
 writeFile = (fs, pathToDomain, serviceObject, callback)->
   serviceScaffold = createIdiomaticServiceString serviceObject
-  fs.open "#{pathToDomain}/services/#{serviceObject.name}/#{serviceObject.name}.coffee", 'w', (err, fd)->
-    fs.write fd, serviceScaffold, serviceScaffold, 0, serviceScaffold.length, (err, fd)->
+  fs.open "#{pathToDomain}/services/#{serviceObject.name}/#{serviceObject.name}.coffee", 'w', null, (err, fd)->
+    fs.write fd, serviceScaffold, 0, serviceScaffold.length, null, (err, fd)->
       fs.close fd, (err)->
         callback()
 

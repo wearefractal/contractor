@@ -16,14 +16,11 @@ fsMockFactory = ->
     @fsHistory.push {command: 'open', path: path, flags: flags}
     callback @openError, {path: path, flags: flags}
   write: (fd, buffer, offset, length, position, callback)->
-    @fsHistory.push {command: 'write', fd: fd, buffer: buffer}
-    position.should.eql NULL
-    offest.should.eql 0
-    length.should.eql buffer.length
+    @fsHistory.push {command: 'write', fd: fd, buffer: buffer, offset: offset, length: length, position: position}
     fd.written = buffer
     callback @writeError, fd
-  close: (callback)->
-    @fsHistory.push {command: 'close'}
+  close: (fd, callback)->
+    @fsHistory.push {command: 'close', fd: fd}
     callback @closeError
 
 module.exports = fsMockFactory
