@@ -3,8 +3,9 @@ createIdiomaticServiceString = (serviceObject)->
   signature = createSignature serviceObject
   typeReminder = createTypeReminder serviceObject
   body = '\n  #TODO this is an auto-scaffolded method'
+  callback = createCallback serviceObject
   exports = "\n\nmodule.exports = #{serviceObject.name}"
-  return '\n' + signature + typeReminder + body + exports
+  return '\n' + signature + typeReminder + body + callback + exports
 
 createTypeReminder = (serviceObject)->
   return '' unless serviceObject.in? and Object.keys(serviceObject.in).length > 0
@@ -21,5 +22,9 @@ createSignature = (serviceObject)->
       signature += ")"
   signature += "->\n"
   return signature
+
+createCallback = (serviceObject) ->
+  #TODO
+  return ''
 
 module.exports = createIdiomaticServiceString

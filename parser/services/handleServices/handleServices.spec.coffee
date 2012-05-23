@@ -5,8 +5,9 @@ fsFactory = require '../shared_mocks/fs.mock'
 require 'should'
 
 describe 'handleServices', ->
+  #TODO this will have to change when spec scaffolds are added
   describe 'when dealing with very simple contracts', (done)->
-    it 'should apply default processing to the contract', (done)->
+    it 'should perform default scaffolding based on the contract', (done)->
       fs = fsFactory()
       pathToDomain = 'pathToDomain'
 

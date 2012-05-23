@@ -6,6 +6,7 @@ handleServices = (fs, pathToDomain, services, callback)->
   hook = (serviceObject)->
     setupServicesDirectoryStructure fs, pathToDomain, serviceObject.name, ->
       writeFile fs, pathToDomain, serviceObject, ->
+        #TODO create spec scaffolds here
 
   applyHooksToServices services, hook, ->
     callback()

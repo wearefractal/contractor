@@ -28,3 +28,7 @@ describe 'createIdiomaticServiceString', ->
                  """
 
       result.should.eql expected
+
+  #describe 'when given a service with outputs', ->
+    #it 'should scaffold out the service', ->
+      #TODO
