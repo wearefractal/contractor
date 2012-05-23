@@ -13,8 +13,8 @@ fsMockFactory = ->
     @fsHistory.push {command: 'mkdir', path: path}
     callback @mkdirError
   open: (path, flags, mode, callback)->
-    @fsHistory.push {command: 'open', path: path, mode: mode}
-    callback @openError, {path: path, mode: mode}
+    @fsHistory.push {command: 'open', path: path, flags: flags}
+    callback @openError, {path: path, flags: flags}
   write: (fd, buffer, offset, length, position, callback)->
     @fsHistory.push {command: 'write', fd: fd, buffer: buffer}
     position.should.eql NULL
