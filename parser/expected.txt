@@ -1,14 +1,12 @@
-require 'should'
-aService = require './aService'
+ 
+   outputTestService = (arg, callback)->
+     #type of arg is @Number
+     #type of callback is @Function
+   
+     #TODO this is an auto-scaffolded method
 
-describe 'aService', (done)->
-  #TODO it 'should call back with correct values', (done)->
-    true.should.eql false
-
-    done()
-
-describe 'aService', (done)->
-  #TODO it 'should produce no side effects', (done)->
-    true.should.eql false
-
-    done()
+     callback aNumber, aString
+     #type of aNumber is @Number
+     #type of aString is @String
+ 
+   module.exports = outputTestService

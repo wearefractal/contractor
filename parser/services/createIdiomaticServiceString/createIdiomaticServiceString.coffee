@@ -1,15 +1,16 @@
 
 createIdiomaticServiceString = (serviceObject)->
   signature = createSignature serviceObject
-  typeReminder = createTypeReminder serviceObject
-  body = '\n  #TODO this is an auto-scaffolded method'
+  inputTypeReminder = createTypeReminder serviceObject.in
+  body = '\n  #TODO this is an auto-scaffolded method\n\n'
   callback = createCallback serviceObject
-  exports = "\n\nmodule.exports = #{serviceObject.name}"
-  return '\n' + signature + typeReminder + body + callback + exports
+  outputTypeReminder = createTypeReminder serviceObject.out
+  exports = "\nmodule.exports = #{serviceObject.name}"
+  return '\n' + signature + inputTypeReminder + body + callback + outputTypeReminder + exports
 
-createTypeReminder = (serviceObject)->
-  return '' unless serviceObject.in? and Object.keys(serviceObject.in).length > 0
-  reminderArray = ("  #type of #{arg} is #{type}\n" for arg, type of serviceObject.in)
+createTypeReminder = (serviceCategory)->
+  return '' unless serviceCategory? and Object.keys(serviceCategory).length > 0
+  reminderArray = ("  #type of #{arg} is #{type}\n" for arg, type of serviceCategory)
   return reminderArray.join ''
 
 createSignature = (serviceObject)->
@@ -20,11 +21,21 @@ createSignature = (serviceObject)->
       signature += "("
       signature += keys.join ", "
       signature += ")"
+    else if keys.length == 1
+      signature += "(#{keys[0]})"
   signature += "->\n"
   return signature
 
-createCallback = (serviceObject) ->
-  #TODO
-  return ''
+createCallback = (serviceObject)->
+  callback = "  callback"
+  if serviceObject.out?
+    keys = Object.keys serviceObject.out
+    if keys.length > 1
+      callback += " "
+      callback += keys.join ", "
+    else if keys.length == 1
+      callback += " #{keys[0]}"
+    callback += '\n'
+  return callback
 
 module.exports = createIdiomaticServiceString

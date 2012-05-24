@@ -1,0 +1,12 @@
+
+outputTestService = (arg, callback)->
+  #type of arg is @Number
+  #type of callback is @Function
+
+  #TODO this is an auto-scaffolded method
+
+  callback aNumber, aString
+  #type of aNumber is @Number
+  #type of aString is @String
+
+module.exports = outputTestService
