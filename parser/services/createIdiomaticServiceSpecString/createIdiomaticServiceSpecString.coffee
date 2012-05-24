@@ -9,10 +9,10 @@ createRequires = (serviceObject)->
   return "require 'should'\n#{serviceObject.name} = require './#{serviceObject.name}'\n\n"
 
 createCallbackTest = (serviceObject)->
-  test = "describe '#{serviceObject.name}', (done)->"
-  test += "  #TODO it 'should call back with correct values', (done)->"
+  test = "describe '#{serviceObject.name}', (done)->\n"
+  test += "  #TODO it 'should call back with correct values', (done)->\n"
   test += "    true.should.eql false\n\n"
-  test += "\n    done()\n\n"
+  test += "    done()\n\n"
   return test
 
 createSideEffectsTests = (serviceObject)->
@@ -20,9 +20,9 @@ createSideEffectsTests = (serviceObject)->
 #TODO
 
 createNoSideEffectsTest = (serviceObject)->
-  test = "describe '#{serviceObject.name}', (done)->"
-  test += "  #TODO it 'should produce no side effects', (done)->"
-  test += "    true.should.eql false\n\n\n"
+  test = "describe '#{serviceObject.name}', (done)->\n"
+  test += "  #TODO it 'should produce no side effects', (done)->\n"
+  test += "    true.should.eql false\n\n"
   test += "    done()"
   return test
 

@@ -1,6 +1,5 @@
 require 'should'
 createIdiomaticServiceSpecString = require './createIdiomaticServiceSpecString'
-fs = require 'fs'
 
 describe 'createIdiomaticServiceSpecString', ->
   #TODO need 3 tests: one for when there's an 'out', one for when there are side effects, and one when there are both
@@ -36,5 +35,4 @@ describe 'createIdiomaticServiceSpecString', ->
                      done()
                  """
 
-      #TODO write expected and actual to file to find whitespace difference"
       result.should.eql expected
